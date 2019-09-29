@@ -2,7 +2,11 @@ package main
 
 import (
 	"flag"
-	"stark/ticket/checker"
+	"fmt"
+	"os"
+	"time"
+
+	"github.com/saurabhmittal16/ticket/checker"
 )
 
 var url, target string
@@ -14,7 +18,16 @@ func init() {
 }
 
 func main() {
-	checker.CheckAvailability(url, target)
-}
+	ticker := time.NewTicker(5 * time.Minute)
 
-// go run main.go --url="https://in.bookmyshow.com/buytickets/dream-girl-national-capital-region-ncr/movie-ncr-ET00089745-MT/20190930" --theatre="INOX: Janak Place"
+	// for every tick in 5 minutes, check for availability
+	for range ticker.C {
+		found := checker.CheckAvailability(url, target)
+		if found {
+			fmt.Println("Tickets are available, book now " + url)
+			os.Exit(0)
+		} else {
+			fmt.Println("Not available; checked at:", time.Now().Format("Jan 2 15:04:05 2006"))
+		}
+	}
+}
