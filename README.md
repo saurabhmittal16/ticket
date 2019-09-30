@@ -10,13 +10,13 @@ go run main.go --url="bookmyshow_url" --theatre="theatre_name" --duration=5
 
 ## Running as background service (Linux)
 
-1. Install the binary
+- Install the binary
 
 ```bash
 go get -u github.com/saurabhmittal16/ticket
 ```
 
-2. Run binary and detach from current session
+- Run binary and detach from current session
 
 ```bash
 nohup ticket --url="bookmyshow_url" --theatre="theatre_name" --duration=5 &
@@ -26,13 +26,13 @@ The service runs in background and logs are appended to `~/nohup.out`. The proce
 
 ## Stopping the process
 
-1. Get the pid of the process
+- Get the pid of the process
 
 ```bash
 ps -e | grep ticket
 ```
 
-2. Kill the process with obtained pid
+- Kill the process with obtained pid
 
 ```bash
 kill 1234
