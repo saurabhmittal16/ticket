@@ -5,7 +5,7 @@ Go script that checks the availability of tickets at a specific theatre and give
 ## Usage
 
 ```bash
-go run main.go --url="bookmyshow_url" --theatre="theatre_name"
+go run main.go --url="bookmyshow_url" --theatre="theatre_name" --duration=5
 ```
 
 ## Running as background service (Linux)
@@ -19,7 +19,7 @@ go get -u github.com/saurabhmittal16/ticket
 2. Run binary and detach from current session
 
 ```bash
-nohup ticket --url="bookmyshow_url" --theatre="theatre_name" &
+nohup ticket --url="bookmyshow_url" --theatre="theatre_name" --duration=5 &
 ```
 
 The service runs in background and logs are appended to `~/nohup.out`. The process quits when tickets are available but it can be manually stopped by following the mentioned procedure
